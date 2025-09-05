@@ -15,7 +15,7 @@ const ConnectWallet = () => {
       <ConnectButton
         accountStatus="avatar"
         showBalance={false}
-        chainStatus="none"
+        chainStatus="icon"
       />
       {!isConnected && <img src={CircleUser} alt="User Avatar" />}
     </Box>

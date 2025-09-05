@@ -6,7 +6,9 @@ export type Context = {
   isConnected: boolean;
   userAddress: Address;
   quantity: number;
+  chainId: number;
   dispatch: React.Dispatch<StoreAction>;
+  resetQuantity: () => void;
   handleDecrement: () => void;
   handleIncrement: () => void;
 };
@@ -19,13 +21,23 @@ export type NFTDetails = {
 };
 
 export type StoreState = {
-  nftDetails: NFTDetails[] | [];
+  nftDetails: {
+    [userAddress: Address]: {
+      [chainId: number]: NFTDetails[] | [];
+    };
+  };
 };
 
 export type StoreAction =
-  | { type: 'SET_NFT_DETAILS'; payload: NFTDetails[] }
-  | { type: 'ADD_NFT_DETAIL'; payload: NFTDetails }
-  | { type: 'UPDATE_NFT_DETAIL'; payload: NFTDetails };
+  | { type: 'SET_NFT_DETAILS'; payload: StoreState['nftDetails'] }
+  | {
+      type: 'ADD_NFT_DETAIL';
+      payload: {
+        userAddress: Address;
+        chainId: number;
+        NFTDetails: NFTDetails;
+      };
+    };
 
 export type NFTReducer = (state: StoreState, action: StoreAction) => StoreState;
 

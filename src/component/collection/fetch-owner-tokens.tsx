@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useFetchNFTByOwner } from '../../hook/useFetchNFTByOwner';
 import FetchTokenDetails from './fetch-token-details';
 
@@ -14,8 +14,9 @@ const FetchOwnerTokens = ({ tokenIndex }: { tokenIndex: number }) => {
     error: NFTFetchError,
   } = useFetchNFTByOwner({ tokenIndex });
 
-  if (NFTFetchLoading) return <Box>Loading...</Box>;
-  if (NFTFetchError) return <Box>Error: {NFTFetchError?.message}</Box>;
+  if (NFTFetchLoading) return <Typography>Loading...</Typography>;
+  if (NFTFetchError)
+    return <Typography>Error: {NFTFetchError?.message}</Typography>;
 
   return <FetchTokenDetails tokenId={Number(tokenId)} />;
 };

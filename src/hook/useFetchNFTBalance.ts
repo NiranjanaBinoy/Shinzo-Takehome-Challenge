@@ -22,5 +22,5 @@ export const useFetchNFTBalance = (): ReadContractResult<number> => {
     args: [userAddress],
   });
 
-  return { balance: Number(balance), isLoading, error };
+  return { balance: balance ? Number(balance) : 0, isLoading, error };
 };

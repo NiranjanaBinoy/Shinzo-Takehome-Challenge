@@ -7,11 +7,11 @@ import NFTDetailsCard from './nft-details-card';
  * @returns {JSX.Element} - The rendered component.
  */
 const Display = () => {
-  const { state } = useNFTContext();
+  const { state, userAddress, chainId } = useNFTContext();
 
   return (
     <Grid container spacing={3} sx={{ margin: 6 }}>
-      {state.nftDetails.map((nft) => (
+      {state.nftDetails[userAddress]?.[chainId]?.map((nft) => (
         <NFTDetailsCard key={nft.tokenId} nft={nft} />
       ))}
     </Grid>

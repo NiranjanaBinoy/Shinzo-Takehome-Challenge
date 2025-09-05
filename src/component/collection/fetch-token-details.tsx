@@ -3,7 +3,8 @@ import { useFetchNFTTokenURI } from '../../hook/useFetchNFTTokenURI';
 import { useNFTContext } from '../../hook/useNFTContext';
 import { useFetchNFTSymbol } from '../../hook/useFetchNFTSymbol';
 import { useFetchNFTName } from '../../hook/useFetchNFTName';
-import { Box } from '@mui/material';
+import { Typography } from '@mui/material';
+import type { NFTDetails } from '../../types/types';
 
 /**
  * Fetch token details by token ID.
@@ -11,7 +12,7 @@ import { Box } from '@mui/material';
  * @returns {JSX.Element} - The rendered component.
  */
 const FetchTokenDetails = ({ tokenId }: { tokenId: number }) => {
-  const { dispatch } = useNFTContext();
+  const { dispatch, userAddress, chainId } = useNFTContext();
   const {
     tokenURI,
     isLoading: isURILoading,
@@ -30,13 +31,16 @@ const FetchTokenDetails = ({ tokenId }: { tokenId: number }) => {
 
   useEffect(() => {
     if (!isURILoading && !isSymbolLoading && !isNameLoading) {
-      const payload = {
+      const nftDetails: NFTDetails = {
         tokenId: tokenId,
         tokenURI: tokenURI as string,
         name: name as string,
         symbol: symbol as string,
       };
-      dispatch({ type: 'ADD_NFT_DETAIL', payload: payload });
+      dispatch({
+        type: 'ADD_NFT_DETAIL',
+        payload: { userAddress, chainId, NFTDetails: nftDetails },
+      });
     }
   }, [
     tokenId,
@@ -47,16 +51,18 @@ const FetchTokenDetails = ({ tokenId }: { tokenId: number }) => {
     isURILoading,
     isSymbolLoading,
     isNameLoading,
+    userAddress,
+    chainId,
   ]);
 
   if (isURILoading || isSymbolLoading || isNameLoading)
-    return <Box>Loading...</Box>;
+    return <Typography>Loading...</Typography>;
 
   if (uriError || symbolError || nameError)
     return (
-      <Box>
+      <Typography>
         Error: {uriError?.message || symbolError?.message || nameError?.message}
-      </Box>
+      </Typography>
     );
 
   return null;

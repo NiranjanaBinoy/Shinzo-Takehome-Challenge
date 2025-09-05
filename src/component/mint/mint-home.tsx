@@ -1,8 +1,17 @@
 import { Box } from '@mui/material';
 import ImageGallery from './image-gallary';
 import MintPanel from './mint-panel';
+import { useEffect } from 'react';
+import { useNFTContext } from '../../hook/useNFTContext';
 
 const MintHome = () => {
+  const { resetQuantity } = useNFTContext();
+  useEffect(() => {
+    // Reset quantity when the component mounts
+    return resetQuantity();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box
       display="flex"
