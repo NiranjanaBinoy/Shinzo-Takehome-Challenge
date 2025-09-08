@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, type FC } from 'react';
 import { useFetchNFTTokenURI } from '../../hook/useFetchNFTTokenURI';
 import { useNFTContext } from '../../hook/useNFTContext';
 import { useFetchNFTSymbol } from '../../hook/useFetchNFTSymbol';
@@ -6,12 +6,15 @@ import { useFetchNFTName } from '../../hook/useFetchNFTName';
 import { Typography } from '@mui/material';
 import type { NFTDetails } from '../../types/types';
 
+type FetchTokenDetailsProps = {
+  tokenId: number;
+};
 /**
  * Fetch token details by token ID.
  * @param param0 - The token ID to fetch.
  * @returns {JSX.Element} - The rendered component.
  */
-const FetchTokenDetails = ({ tokenId }: { tokenId: number }) => {
+const FetchTokenDetails: FC<FetchTokenDetailsProps> = ({ tokenId }) => {
   const { dispatch, userAddress, chainId } = useNFTContext();
   const {
     tokenURI,

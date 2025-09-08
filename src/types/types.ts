@@ -1,5 +1,6 @@
 export type Hex = `0x${string}`;
 export type Address = Hex;
+export type TokenId = number;
 
 export type Context = {
   state: StoreState;
@@ -7,10 +8,12 @@ export type Context = {
   userAddress: Address;
   quantity: number;
   chainId: number;
+  selectedForUpgrade: number[];
   dispatch: React.Dispatch<StoreAction>;
   resetQuantity: () => void;
   handleDecrement: () => void;
   handleIncrement: () => void;
+  handleUpgradeSelection: (sele: number[]) => void;
 };
 
 export type NFTDetails = {
@@ -19,23 +22,47 @@ export type NFTDetails = {
   tokenId: number;
   tokenURI?: string;
 };
-
-export type StoreState = {
-  nftDetails: {
-    [userAddress: Address]: {
-      [chainId: number]: NFTDetails[] | [];
-    };
+export type NFTDetailsMap = {
+  [userAddress: Address]: {
+    [chainId: number]: NFTDetails[] | [];
   };
+};
+export type UpgradedNFTDetailsMap = {
+  [userAddress: Address]: {
+    [chainId: number]: [NFTDetails, NFTDetails][] | [];
+  };
+};
+export type StoreState = {
+  activeNftDetails: NFTDetailsMap;
+  burnedNftDetails: NFTDetailsMap;
+  upgradedNftDetails: UpgradedNFTDetailsMap;
 };
 
 export type StoreAction =
-  | { type: 'SET_NFT_DETAILS'; payload: StoreState['nftDetails'] }
+  | { type: 'SET_NFT_DETAILS'; payload: StoreState }
   | {
       type: 'ADD_NFT_DETAIL';
       payload: {
         userAddress: Address;
         chainId: number;
         NFTDetails: NFTDetails;
+      };
+    }
+  | {
+      type: 'BURN_NFT_DETAIL';
+      payload: {
+        userAddress: Address;
+        chainId: number;
+        tokenId: TokenId;
+      };
+    }
+  | {
+      type: 'UPGRADED_NFT_DETAIL';
+      payload: {
+        userAddress: Address;
+        chainId: number;
+        tokenId1: TokenId;
+        tokenId2: TokenId;
       };
     };
 

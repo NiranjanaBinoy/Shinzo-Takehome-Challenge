@@ -1,20 +1,26 @@
-import { type FC } from 'react';
-import FetchTokens from './fetch-tokens';
-import DisplayAllNFT from './display-all-nft';
+import { useEffect, type FC } from 'react';
 import { Divider } from '@mui/material';
 import UserInfo from './user-info';
+import { useNFTContext } from '../../hook/useNFTContext';
+import UserNftDisplay from './user-nft-display';
 
 /**
  * CollectionsHome component.
  * @returns {JSX.Element} - The rendered component.
  */
 const CollectionsHome: FC = () => {
+  const { handleUpgradeSelection } = useNFTContext();
+
+  useEffect(() => {
+    handleUpgradeSelection([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <UserInfo />
       <Divider sx={{ borderColor: '#252525', margin: 4 }} />
-      <FetchTokens />
-      <DisplayAllNFT />
+      <UserNftDisplay />
     </>
   );
 };

@@ -1,12 +1,19 @@
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import type { NFTDetails } from '../../types/types';
+import NFTCardOverLay from './nft-card-overlay';
+import NFTUpgradeSelection from './nft-upgrade-selection';
+import type { FC } from 'react';
+
+type NFTDetailsCardProps = {
+  nft: NFTDetails;
+};
 
 /**
  * NFTDetailsCard component displays the details of a specific NFT.
  * @param param0 - The NFT details to display.
  * @returns {JSX.Element} - The rendered component.
  */
-const NFTDetailsCard = ({ nft }: { nft: NFTDetails }) => {
+const NFTDetailsCard: FC<NFTDetailsCardProps> = ({ nft }) => {
   return (
     <Box
       key={nft.tokenId}
@@ -15,15 +22,21 @@ const NFTDetailsCard = ({ nft }: { nft: NFTDetails }) => {
       <Card
         key={nft.tokenId}
         sx={{
+          position: 'relative',
           maxWidth: 250,
           backgroundColor: '#000000',
           color: '#ffffff',
           borderColor: '#ffffff',
+          '&:hover .overlay': {
+            opacity: 1,
+            pointerEvents: 'auto',
+          },
         }}
       >
+        <NFTUpgradeSelection nft={nft} />
         <CardMedia
           component="img"
-          height="220"
+          height="240"
           image={nft.tokenURI}
           alt={nft.name}
         />
@@ -47,6 +60,7 @@ const NFTDetailsCard = ({ nft }: { nft: NFTDetails }) => {
             TOKEN #{nft.tokenId}
           </Typography>
         </CardContent>
+        <NFTCardOverLay tokenId={nft.tokenId} />
       </Card>
     </Box>
   );

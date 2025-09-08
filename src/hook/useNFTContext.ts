@@ -1,20 +1,27 @@
 import { createContext, useContext } from 'react';
 import { sepolia } from 'wagmi/chains';
-import type { Context } from '../types/types';
+import type { Context, TokenId } from '../types/types';
 
 /**
  * Context provider for NFT-related state and actions.
  */
 export const NFTContext = createContext<Context>({
-  state: { nftDetails: { '0x': {} } },
+  state: {
+    activeNftDetails: { '0x': {} },
+    burnedNftDetails: { '0x': {} },
+    upgradedNftDetails: { '0x': {} },
+  },
   isConnected: false,
   userAddress: '0x',
   quantity: 1,
   chainId: sepolia.id,
+  selectedForUpgrade: [],
   dispatch: () => {},
   resetQuantity: () => {},
   handleDecrement: () => {},
   handleIncrement: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  handleUpgradeSelection: (_selectedTokenIds: TokenId[]) => {},
 });
 
 /**

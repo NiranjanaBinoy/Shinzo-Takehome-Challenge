@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { Avatar, Box, Typography } from '@mui/material';
 import { shortenAddress } from '../../helpers/utils';
 import { useNFTContext } from '../../hook/useNFTContext';
@@ -8,7 +9,7 @@ import { normalize } from 'viem/ens';
  * UserInfo component displays the user's address and ENS information.
  * @returns {JSX.Element} - The rendered component.
  */
-const UserInfo = () => {
+const UserInfo: FC = () => {
   const { userAddress } = useNFTContext();
   const { data: ensName } = useEnsName({ address: userAddress });
   const { data: ensAvatar } = useEnsAvatar({
