@@ -33,13 +33,13 @@ const MintPanel: FC = () => {
       flexDirection="column"
       justifyContent="center"
       bgcolor="#101010"
-      border={4}
+      border={12}
       borderColor="#252525"
       borderRadius={2}
       boxShadow={8}
-      minWidth={450}
+      minWidth={750}
       minHeight={400}
-      padding={3}
+      padding={4}
     >
       <Typography
         variant="h3"
@@ -69,6 +69,10 @@ const MintPanel: FC = () => {
         <img src={Group28} alt="Shinzo" />
         <Box
           sx={{
+            position: 'absolute',
+            top: '57%',
+            right: '0',
+            transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'row',
             margin: 10,
@@ -80,12 +84,12 @@ const MintPanel: FC = () => {
             variant="contained"
             onClick={onSubmit}
             sx={{
-              background: 'linear-gradient(#B30000 0%, #D01F27 100%)',
+              background: 'linear-gradient(.30turn, #FF0000, 50%, #990000)',
               color: '#FFFFFF',
-              paddingX: 5,
+              paddingX: 7,
               fontSize: 16,
               fontWeight: 700,
-              marginLeft: 2,
+              marginLeft: 3,
             }}
           >
             {isConfirming ? 'Minting...' : isConfirmed ? 'Minted' : 'Mint'}

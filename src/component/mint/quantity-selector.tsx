@@ -16,7 +16,7 @@ const QuantitySelector = () => {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        paddingX: 1,
+        paddingX: 3,
         paddingY: 0.5,
         bgcolor: '#252525',
       }}
