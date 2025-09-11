@@ -1,12 +1,13 @@
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { Box, Button, Divider, Typography } from '@mui/material';
 import useSacrificeNFT from '../../hook/useSacrificeNFT';
 import { useNFTContext } from '../../hook/useNFTContext';
 import useUpgradeNFT from '../../hook/useUpgradeNFT';
 import FetchTokens from './fetch-tokens';
+import type { TokenId } from '../../types/types';
 
 type NFTCardOverLayProps = {
-  tokenId: number;
+  tokenId: TokenId;
 };
 /**
  * NFTCardOverLay component for displaying overlay actions on an NFT card.
@@ -14,9 +15,17 @@ type NFTCardOverLayProps = {
  * @returns The rendered component.
  */
 const NFTCardOverLay: FC<NFTCardOverLayProps> = ({ tokenId }) => {
-  const { selectedForUpgrade } = useNFTContext();
+  const { selectedForUpgrade, handleUpgradeSelection } = useNFTContext();
   const { onSacrifice, isSacrificing } = useSacrificeNFT(tokenId);
   const { onUpgrade, isUpgraded } = useUpgradeNFT(selectedForUpgrade);
+
+  useEffect(() => {
+    return () => {
+      if (isUpgraded) {
+        handleUpgradeSelection([]);
+      }
+    };
+  }, [isUpgraded, handleUpgradeSelection]);
 
   return (
     <>

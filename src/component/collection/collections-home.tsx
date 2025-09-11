@@ -9,12 +9,12 @@ import UserNftDisplay from './user-nft-display';
  * @returns {JSX.Element} - The rendered component.
  */
 const CollectionsHome: FC = () => {
-  const { handleUpgradeSelection } = useNFTContext();
+  const { userAddress, handleUpgradeSelection } = useNFTContext();
 
   useEffect(() => {
     handleUpgradeSelection([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userAddress]);
 
   return (
     <>

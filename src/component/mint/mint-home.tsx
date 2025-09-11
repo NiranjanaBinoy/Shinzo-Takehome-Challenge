@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 import { useNFTContext } from '../../hook/useNFTContext';
 
 const MintHome = () => {
-  const { resetQuantity } = useNFTContext();
+  const { userAddress, resetQuantity } = useNFTContext();
   useEffect(() => {
     // Reset quantity when the component mounts
     return resetQuantity();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userAddress]);
 
   return (
     <Box
