@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import Box from '@mui/material/Box';
-import { useFetchNFTBalance } from '../../hook/useFetchNFTBalance';
+import { useFetchNFTBalance } from '../../../hook/useFetchNFTBalance';
 import FetchOwnerTokens from './fetch-owner-tokens';
-import { useNFTContext } from '../../hook/useNFTContext';
+import { useNFTContext } from '../../../hook/useNFTContext';
 import { Typography } from '@mui/material';
 
 /**

@@ -2,8 +2,8 @@ import { useState, type FC } from 'react';
 import { Box, Checkbox } from '@mui/material';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useNFTContext } from '../../hook/useNFTContext';
-import type { NFTDetails } from '../../types/types';
+import { useNFTContext } from '../../../../hook/useNFTContext';
+import type { NFTDetails } from '../../../../types/types';
 
 type NFTUpgradeSelectionProps = {
   nft: NFTDetails;

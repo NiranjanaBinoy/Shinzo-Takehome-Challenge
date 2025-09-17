@@ -2,7 +2,7 @@ import { useEffect, type FC } from 'react';
 import { Divider } from '@mui/material';
 import UserInfo from './user-info';
 import { useNFTContext } from '../../hook/useNFTContext';
-import UserNftDisplay from './user-nft-display';
+import UserNftDisplay from './nft-display/user-nft-display';
 
 /**
  * CollectionsHome component.

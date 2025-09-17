@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Grid } from '@mui/material';
-import { useNFTContext } from '../../hook/useNFTContext';
-import NFTDetailsCard from './nft-details-card';
+import { useNFTContext } from '../../../hook/useNFTContext';
+import NFTDetailsCard from '../nft-details/nft-details-card';
 
 /**
  * Display all NFTs.

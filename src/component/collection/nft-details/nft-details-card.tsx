@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import type { NFTDetails } from '../../types/types';
+import type { NFTDetails } from '../../../types/types';
 import NFTCardOverLay from './nft-card-overlay';
-import NFTUpgradeSelection from './nft-upgrade-selection';
+import NFTUpgradeSelection from './nft-upgrade/nft-upgrade-selection';
 import type { FC } from 'react';
 
 type NFTDetailsCardProps = {
@@ -10,7 +10,7 @@ type NFTDetailsCardProps = {
 
 /**
  * NFTDetailsCard component displays the details of a specific NFT.
- * @param param0 - The NFT details to display.
+ * @param nft - The NFT details to display.
  * @returns {JSX.Element} - The rendered component.
  */
 const NFTDetailsCard: FC<NFTDetailsCardProps> = ({ nft }) => {

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Typography } from '@mui/material';
-import { useFetchNFTByOwner } from '../../hook/useFetchNFTByOwner';
+import { useFetchNFTByOwner } from '../../../hook/useFetchNFTByOwner';
 import FetchTokenDetails from './fetch-token-details';
 
 type FetchOwnerTokensProps = {

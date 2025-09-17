@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import FetchTokens from './fetch-tokens';
+import FetchTokens from '../nft-fetch/fetch-tokens';
 import DisplayAllNFT from './display-all-nft';
 
 const UserNftDisplay: FC = () => {

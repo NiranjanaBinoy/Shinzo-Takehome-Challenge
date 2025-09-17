@@ -1,10 +1,10 @@
 import { useEffect, type FC } from 'react';
-import { useFetchNFTTokenURI } from '../../hook/useFetchNFTTokenURI';
-import { useNFTContext } from '../../hook/useNFTContext';
-import { useFetchNFTSymbol } from '../../hook/useFetchNFTSymbol';
-import { useFetchNFTName } from '../../hook/useFetchNFTName';
+import { useFetchNFTTokenURI } from '../../../hook/useFetchNFTTokenURI';
+import { useNFTContext } from '../../../hook/useNFTContext';
+import { useFetchNFTSymbol } from '../../../hook/useFetchNFTSymbol';
+import { useFetchNFTName } from '../../../hook/useFetchNFTName';
 import { Typography } from '@mui/material';
-import type { NFTDetails } from '../../types/types';
+import type { NFTDetails } from '../../../types/types';
 
 type FetchTokenDetailsProps = {
   tokenId: number;

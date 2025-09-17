@@ -10,6 +10,7 @@ export const NFTContext = createContext<Context>({
     activeNftDetails: { '0x': {} },
     burnedNftDetails: { '0x': {} },
     upgradedNftDetails: { '0x': {} },
+    transferedNftDetails: { '0x': {} },
   },
   isConnected: false,
   userAddress: '0x',

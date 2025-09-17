@@ -22,6 +22,13 @@ export type NFTDetails = {
   tokenId: number;
   tokenURI?: string;
 };
+export type TransferDetails = {
+  name?: string;
+  symbol?: string;
+  tokenId: number;
+  tokenURI?: string;
+  toAddress?: Address;
+};
 export type NFTDetailsMap = {
   [userAddress: Address]: {
     [chainId: number]: NFTDetails[] | [];
@@ -32,10 +39,16 @@ export type UpgradedNFTDetailsMap = {
     [chainId: number]: [NFTDetails, NFTDetails][] | [];
   };
 };
+export type TransferNftDetailsMap = {
+  [userAddress: Address]: {
+    [chainId: number]: TransferDetails[] | [];
+  };
+};
 export type StoreState = {
   activeNftDetails: NFTDetailsMap;
   burnedNftDetails: NFTDetailsMap;
   upgradedNftDetails: UpgradedNFTDetailsMap;
+  transferedNftDetails: TransferNftDetailsMap;
 };
 
 export type StoreAction =
@@ -63,6 +76,15 @@ export type StoreAction =
         chainId: number;
         tokenId1: TokenId;
         tokenId2: TokenId;
+      };
+    }
+  | {
+      type: 'TRANSFER_NFT';
+      payload: {
+        userAddress: Address;
+        chainId: number;
+        toAddress: Address;
+        tokenId: TokenId;
       };
     };
 
